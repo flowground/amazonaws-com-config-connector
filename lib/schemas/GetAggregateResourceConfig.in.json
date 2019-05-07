@@ -1,0 +1,160 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ConfigurationAggregatorName": {
+                    "description": "The name of the configuration aggregator.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "pattern": "[\\w\\-]+",
+                    "type": "string"
+                },
+                "ResourceIdentifier": {
+                    "description": "An object that identifies aggregate resource.",
+                    "properties": {
+                        "ResourceId": {
+                            "description": "The ID of the AWS resource.",
+                            "maxLength": 768,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "ResourceName": {
+                            "description": "The name of the AWS resource.",
+                            "type": "string"
+                        },
+                        "ResourceType": {
+                            "description": "The type of the AWS resource.",
+                            "enum": [
+                                "AWS::EC2::CustomerGateway",
+                                "AWS::EC2::EIP",
+                                "AWS::EC2::Host",
+                                "AWS::EC2::Instance",
+                                "AWS::EC2::InternetGateway",
+                                "AWS::EC2::NetworkAcl",
+                                "AWS::EC2::NetworkInterface",
+                                "AWS::EC2::RouteTable",
+                                "AWS::EC2::SecurityGroup",
+                                "AWS::EC2::Subnet",
+                                "AWS::CloudTrail::Trail",
+                                "AWS::EC2::Volume",
+                                "AWS::EC2::VPC",
+                                "AWS::EC2::VPNConnection",
+                                "AWS::EC2::VPNGateway",
+                                "AWS::IAM::Group",
+                                "AWS::IAM::Policy",
+                                "AWS::IAM::Role",
+                                "AWS::IAM::User",
+                                "AWS::ACM::Certificate",
+                                "AWS::RDS::DBInstance",
+                                "AWS::RDS::DBSubnetGroup",
+                                "AWS::RDS::DBSecurityGroup",
+                                "AWS::RDS::DBSnapshot",
+                                "AWS::RDS::EventSubscription",
+                                "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                                "AWS::S3::Bucket",
+                                "AWS::SSM::ManagedInstanceInventory",
+                                "AWS::Redshift::Cluster",
+                                "AWS::Redshift::ClusterSnapshot",
+                                "AWS::Redshift::ClusterParameterGroup",
+                                "AWS::Redshift::ClusterSecurityGroup",
+                                "AWS::Redshift::ClusterSubnetGroup",
+                                "AWS::Redshift::EventSubscription",
+                                "AWS::CloudWatch::Alarm",
+                                "AWS::CloudFormation::Stack",
+                                "AWS::DynamoDB::Table",
+                                "AWS::AutoScaling::AutoScalingGroup",
+                                "AWS::AutoScaling::LaunchConfiguration",
+                                "AWS::AutoScaling::ScalingPolicy",
+                                "AWS::AutoScaling::ScheduledAction",
+                                "AWS::CodeBuild::Project",
+                                "AWS::WAF::RateBasedRule",
+                                "AWS::WAF::Rule",
+                                "AWS::WAF::WebACL",
+                                "AWS::WAFRegional::RateBasedRule",
+                                "AWS::WAFRegional::Rule",
+                                "AWS::WAFRegional::WebACL",
+                                "AWS::CloudFront::Distribution",
+                                "AWS::CloudFront::StreamingDistribution",
+                                "AWS::WAF::RuleGroup",
+                                "AWS::WAFRegional::RuleGroup",
+                                "AWS::Lambda::Function",
+                                "AWS::ElasticBeanstalk::Application",
+                                "AWS::ElasticBeanstalk::ApplicationVersion",
+                                "AWS::ElasticBeanstalk::Environment",
+                                "AWS::ElasticLoadBalancing::LoadBalancer",
+                                "AWS::XRay::EncryptionConfig",
+                                "AWS::SSM::AssociationCompliance",
+                                "AWS::SSM::PatchCompliance",
+                                "AWS::Shield::Protection",
+                                "AWS::ShieldRegional::Protection",
+                                "AWS::Config::ResourceCompliance",
+                                "AWS::CodePipeline::Pipeline"
+                            ],
+                            "type": "string"
+                        },
+                        "SourceAccountId": {
+                            "description": "The 12-digit account ID of the source account.",
+                            "pattern": "\\d{12}",
+                            "type": "string"
+                        },
+                        "SourceRegion": {
+                            "description": "The source region where data is aggregated.",
+                            "maxLength": 64,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "SourceAccountId",
+                        "SourceRegion",
+                        "ResourceId",
+                        "ResourceType"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "ConfigurationAggregatorName",
+                "ResourceIdentifier"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,117 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "AccountAggregationSources": {
+                    "description": "A list of AccountAggregationSource object. ",
+                    "items": {
+                        "description": "A collection of accounts and regions.",
+                        "properties": {
+                            "AccountIds": {
+                                "description": "The 12-digit account ID of the account being aggregated. ",
+                                "items": {
+                                    "pattern": "\\d{12}",
+                                    "type": "string"
+                                },
+                                "minItems": 1,
+                                "type": "array"
+                            },
+                            "AllAwsRegions": {
+                                "description": "If true, aggregate existing AWS Config regions and future regions.",
+                                "type": "boolean"
+                            },
+                            "AwsRegions": {
+                                "description": "The source regions being aggregated.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "minItems": 1,
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "AccountIds"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "type": "array"
+                },
+                "ConfigurationAggregatorName": {
+                    "description": "The name of the configuration aggregator.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "pattern": "[\\w\\-]+",
+                    "type": "string"
+                },
+                "OrganizationAggregationSource": {
+                    "description": "An OrganizationAggregationSource object.",
+                    "properties": {
+                        "AllAwsRegions": {
+                            "description": "If true, aggregate existing AWS Config regions and future regions.",
+                            "type": "boolean"
+                        },
+                        "AwsRegions": {
+                            "description": "The source regions being aggregated.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1,
+                            "type": "array"
+                        },
+                        "RoleArn": {
+                            "description": "ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "RoleArn"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "ConfigurationAggregatorName"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

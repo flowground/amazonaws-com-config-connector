@@ -1,0 +1,145 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "RemediationConfigurations": {
+                    "description": "A list of remediation configuration objects.",
+                    "items": {
+                        "description": "An object that represents the details about the remediation configuration that includes the remediation action, parameters, and data to execute the action.",
+                        "properties": {
+                            "ConfigRuleName": {
+                                "description": "The name of the AWS Config rule.",
+                                "maxLength": 64,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "Parameters": {
+                                "description": "An object of the RemediationParameterValue.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 256,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "The value is either a dynamic (resource) value or a static value. You must select either a dynamic value or a static value.",
+                                            "properties": {
+                                                "ResourceValue": {
+                                                    "description": "The value is dynamic and changes at run-time.",
+                                                    "properties": {
+                                                        "Value": {
+                                                            "description": "The value is a resource ID.",
+                                                            "enum": [
+                                                                "RESOURCE_ID"
+                                                            ],
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "StaticValue": {
+                                                    "description": "The value is static and does not change at run-time.",
+                                                    "properties": {
+                                                        "Values": {
+                                                            "description": "A list of values. For example, the ARN of the assumed role. ",
+                                                            "items": {
+                                                                "maxLength": 256,
+                                                                "minLength": 1,
+                                                                "type": "string"
+                                                            },
+                                                            "maxItems": 25,
+                                                            "minItems": 0,
+                                                            "type": "array"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "maxItems": 25,
+                                "minItems": 0,
+                                "type": "array"
+                            },
+                            "ResourceType": {
+                                "description": "The type of a resource. ",
+                                "type": "string"
+                            },
+                            "TargetId": {
+                                "description": "Public ID is document.",
+                                "maxLength": 256,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "TargetType": {
+                                "description": "The type of the target. Target executes remediation. For example, SSM document.",
+                                "enum": [
+                                    "SSM_DOCUMENT"
+                                ],
+                                "type": "string"
+                            },
+                            "TargetVersion": {
+                                "description": "Version of the target. For example, version of the SSM document.",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "ConfigRuleName",
+                            "TargetType",
+                            "TargetId"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 25,
+                    "minItems": 0,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "RemediationConfigurations"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "AuthorizedAccountId": {
+                    "description": "The 12-digit account ID of the account authorized to aggregate data.",
+                    "pattern": "\\d{12}",
+                    "type": "string"
+                },
+                "AuthorizedAwsRegion": {
+                    "description": "The region authorized to collect aggregated data.",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "AuthorizedAccountId",
+                "AuthorizedAwsRegion"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

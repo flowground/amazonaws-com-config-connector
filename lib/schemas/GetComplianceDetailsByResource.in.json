@@ -1,0 +1,82 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p/>",
+            "properties": {
+                "ComplianceTypes": {
+                    "description": "<p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>",
+                    "items": {
+                        "enum": [
+                            "COMPLIANT",
+                            "NON_COMPLIANT",
+                            "NOT_APPLICABLE",
+                            "INSUFFICIENT_DATA"
+                        ],
+                        "type": "string"
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "type": "array"
+                },
+                "NextToken": {
+                    "description": "The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.",
+                    "type": "string"
+                },
+                "ResourceId": {
+                    "description": "The ID of the AWS resource for which you want compliance information.",
+                    "maxLength": 768,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "ResourceType": {
+                    "description": "The type of the AWS resource for which you want compliance information.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ResourceType",
+                "ResourceId"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

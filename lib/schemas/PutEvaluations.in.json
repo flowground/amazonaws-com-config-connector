@@ -1,0 +1,109 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p/>",
+            "properties": {
+                "Evaluations": {
+                    "description": "The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.",
+                    "items": {
+                        "description": "Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.",
+                        "properties": {
+                            "Annotation": {
+                                "description": "Supplementary information about how the evaluation determined the compliance.",
+                                "maxLength": 256,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "ComplianceResourceId": {
+                                "description": "The ID of the AWS resource that was evaluated.",
+                                "maxLength": 768,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "ComplianceResourceType": {
+                                "description": "The type of AWS resource that was evaluated.",
+                                "maxLength": 256,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "ComplianceType": {
+                                "description": "<p>Indicates whether the AWS resource complies with the AWS Config rule that it was evaluated against.</p> <p>For the <code>Evaluation</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for this data type.</p> <p>Similarly, AWS Config does not accept <code>INSUFFICIENT_DATA</code> as the value for <code>ComplianceType</code> from a <code>PutEvaluations</code> request. For example, an AWS Lambda function for a custom AWS Config rule cannot pass an <code>INSUFFICIENT_DATA</code> value to AWS Config.</p>",
+                                "enum": [
+                                    "COMPLIANT",
+                                    "NON_COMPLIANT",
+                                    "NOT_APPLICABLE",
+                                    "INSUFFICIENT_DATA"
+                                ],
+                                "type": "string"
+                            },
+                            "OrderingTimestamp": {
+                                "description": "The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example, every 24 hours).",
+                                "format": "date-time",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "ComplianceResourceType",
+                            "ComplianceResourceId",
+                            "ComplianceType",
+                            "OrderingTimestamp"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 100,
+                    "minItems": 0,
+                    "type": "array"
+                },
+                "ResultToken": {
+                    "description": "An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation.",
+                    "type": "string"
+                },
+                "TestMode": {
+                    "description": "<p>Use this parameter to specify a test run for <code>PutEvaluations</code>. You can verify whether your AWS Lambda function will deliver evaluation results to AWS Config. No updates occur to your existing evaluations, and evaluation results are not sent to AWS Config.</p> <note> <p>When <code>TestMode</code> is <code>true</code>, <code>PutEvaluations</code> doesn't require a valid value for the <code>ResultToken</code> parameter, but the value cannot be null.</p> </note>",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "ResultToken"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
